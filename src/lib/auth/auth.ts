@@ -31,13 +31,9 @@ const getAuthConfig = createServerOnlyFn(() =>
 
     // https://www.better-auth.com/docs/concepts/oauth
     socialProviders: {
-      github: {
-        clientId: env.GITHUB_CLIENT_ID!,
-        clientSecret: env.GITHUB_CLIENT_SECRET!,
-      },
-      google: {
-        clientId: env.GOOGLE_CLIENT_ID!,
-        clientSecret: env.GOOGLE_CLIENT_SECRET!,
+      discord: {
+        clientId: env.DISCORD_CLIENT_ID!,
+        clientSecret: env.DISCORD_CLIENT_SECRET!,
       },
     },
 
@@ -50,6 +46,9 @@ const getAuthConfig = createServerOnlyFn(() =>
       // https://www.better-auth.com/docs/adapters/drizzle#joins-experimental
       joins: true,
     },
+
+    // Hack, remove in production.
+    trustedOrigins: [env.VITE_BASE_URL, process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN || "", "https://localhost:3000", "http://localhost:3000"].filter(Boolean),
   }),
 );
 

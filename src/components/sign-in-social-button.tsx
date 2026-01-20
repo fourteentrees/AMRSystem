@@ -12,8 +12,8 @@ interface SocialLoginButtonProps {
 
 export function SignInSocialButton(props: SocialLoginButtonProps) {
   const providerLabel =
-    props.provider === "github"
-      ? "GitHub"
+    props.provider === "discord"
+      ? "Discord"
       : props.provider.charAt(0).toUpperCase() + props.provider.slice(1);
 
   const mutation = useMutation({
