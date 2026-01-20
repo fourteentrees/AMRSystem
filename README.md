@@ -1,7 +1,10 @@
-# [React TanStarter](https://github.com/dotnize/react-tanstarter)
+# "Windev" AMRSystem
 
-A minimal starter template for 🏝️ TanStack Start. [→ Preview here](https://tanstarter.nize.ph/)
+TanStack Start-based ad crawl and music request manager.
 
+Built originally for [KWSF-IP](https://live.mistwx.com/player?channel=kwsf01) but can be easily adapted for any STAR/OBS-based system!
+
+## STACC
 - [React 19](https://react.dev) + [React Compiler](https://react.dev/learn/react-compiler)
 - TanStack [Start](https://tanstack.com/start/latest) + [Router](https://tanstack.com/router/latest) + [Query](https://tanstack.com/query/latest)
 - [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/) + [Base UI](https://base-ui.com/)
@@ -11,22 +14,15 @@ A minimal starter template for 🏝️ TanStack Start. [→ Preview here](https:
 
 ## Getting Started
 
-1. [Use this template](https://github.com/new?template_name=react-tanstarter&template_owner=dotnize) or clone this repository with gitpick:
-
-   ```bash
-   npx gitpick dotnize/react-tanstarter myapp
-   cd myapp
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
 
    ```bash
    pnpm install
    ```
 
-3. Create a `.env` file based on [`.env.example`](./.env.example).
+2. Create a `.env` file based on [`.env.example`](./.env.example).
 
-4. Push the schema to your database with drizzle-kit:
+3. Don't be a moron, and push the schema to your database with drizzle-kit:
 
    ```bash
    pnpm db push
@@ -34,7 +30,9 @@ A minimal starter template for 🏝️ TanStack Start. [→ Preview here](https:
 
    https://orm.drizzle.team/docs/migrations
 
-5. Run the development server:
+   While it will run without this, it will crash, burn, detonate, and explode, all at once, when you sign in.
+
+4. Run the development server:
 
    ```bash
    pnpm dev
@@ -43,8 +41,6 @@ A minimal starter template for 🏝️ TanStack Start. [→ Preview here](https:
    The development server should now be running at [http://localhost:3000](http://localhost:3000).
 
 ## Deploying to production
-
-The [vite config](./vite.config.ts#L12-L13) is currently configured to use [Nitro v3](https://v3.nitro.build) (nightly) to deploy on Vercel, but can be easily switched to other providers.
 
 Refer to the [TanStack Start hosting docs](https://tanstack.com/start/latest/docs/framework/react/guide/hosting) for deploying to other platforms.
 
@@ -59,7 +55,7 @@ Refer to the [TanStack Start hosting docs](https://tanstack.com/start/latest/doc
 
 #### Scripts
 
-We use **pnpm** by default, but you can modify these scripts in [package.json](./package.json) to use your preferred package manager.
+We use **pnpm**.
 
 - **`auth:generate`** - Regenerate the [auth db schema](./src/lib/db/schema/auth.schema.ts) if you've made changes to your Better Auth [config](./src/lib/auth/auth.ts).
 - **`db`** - Run [drizzle-kit](https://orm.drizzle.team/docs/kit-overview) commands. (e.g. `pnpm db generate`, `pnpm db studio`)
@@ -75,9 +71,18 @@ We use **pnpm** by default, but you can modify these scripts in [package.json](.
 
 ## License
 
-Code in this template is public domain via [Unlicense](./LICENSE). Feel free to remove or replace for your own project.
+AMRSystem, an ad crawl and music request manager for OBS/i2-based systems.
+Copyright (C) 2026 Hayden Walker.
 
-## Also check out
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-- [@tanstack/create-start](https://github.com/TanStack/create-tsrouter-app/blob/main/cli/ts-create-start/README.md) - The official CLI tool from the TanStack team to create Start projects.
-- [awesome-tanstack-start](https://github.com/Balastrong/awesome-tanstack-start) - A curated list of awesome resources for TanStack Start.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
