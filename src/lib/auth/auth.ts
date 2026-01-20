@@ -46,8 +46,7 @@ const getAuthConfig = createServerOnlyFn(() =>
       // https://www.better-auth.com/docs/adapters/drizzle#joins-experimental
       joins: true,
     },
-
-    // Hack, remove in production.
+    // Hack, remove in production. TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
     trustedOrigins: [env.VITE_BASE_URL, process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN || "", "https://localhost:3000", "http://localhost:3000"].filter(Boolean),
   }),
 );
