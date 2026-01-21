@@ -1,27 +1,31 @@
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { Button } from "~/components/ui/button";
-
 export const Route = createFileRoute("/_auth/dashboard")({
   component: DashboardLayout,
 });
 
 function DashboardLayout() {
+  const { user } = Route.useRouteContext();
+
+  // @ts-expect-error -- It very much exists
+  const showCrawlsButton = user.role >= 1;
+
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-10 p-2">
       <div className="flex flex-col items-center gap-2">
-        <h1 className="text-3xl font-bold sm:text-4xl">Dashboard Layout</h1>
-        <pre className="bg-card text-card-foreground mb-4 rounded-md border p-1 text-xs">
-          routes/_auth/dashboard/route.tsx
-        </pre>
+        <h1 className="text-3xl font-bold sm:text-4xl">DimwitNetworks Requestr</h1>
+
         <div className="text-foreground/80 mb-4 flex flex-col items-center gap-2 text-sm">
-          This is a protected layout from the _auth pathless layout route:
-          <pre className="bg-card text-card-foreground rounded-md border p-1 text-xs">
-            routes/_auth/route.tsx
-          </pre>
+          Buttons for what you can do:
         </div>
 
-        <Button render={<Link to="/" />} className="w-fit" size="lg" nativeButton={false}>
-          Back to home
+        {showCrawlsButton && (
+          <Button render={<Link to="/dashboard/crawls" />} className="w-fit" size="lg">
+            Ad Crawls
+          </Button>
+        )}
+        <Button render={<Link to="/dashboard" />} className="w-fit" size="lg" nativeButton={false}>
+          Back to Dashboard
         </Button>
       </div>
 
