@@ -63,7 +63,11 @@ We use **pnpm**.
 - **`format`**, **`lint`**, **`check-types`** - Run Prettier, ESLint, and check TypeScript types respectively.
   - **`check`** - Run all three above. (e.g. `pnpm check`)
 - **`deps`** - Selectively upgrade dependencies via taze.
+- **`user:promote`** - Make a user admin via their email. (e.g. `pnpm makeadmin advertising.employee@dimwitnetworks.org`)
+- **`user:whitelist`** - Whitelist a user for the `/dashboard/crawls` routes via their email. (e.g. `pnpm whitelist marketing.client@notdimwitnetworks.org`)
+- **`user:demote`** - Remove admin AND whitelist status from a user via their email. (e.g. `pnpm demote fired.employee@dimwitnetworks.org`)
 
+**Note: Use user:whitelist if you'd like to strip a user's admin but retain their crawl access.**
 #### Utilities
 
 - [`auth/middleware.ts`](./src/lib/auth/middleware.ts) - Sample middleware for forcing authentication on server functions. (see [#5](https://github.com/dotnize/react-tanstarter/issues/5#issuecomment-2615905686) and [#17](https://github.com/dotnize/react-tanstarter/issues/17#issuecomment-2853482062))

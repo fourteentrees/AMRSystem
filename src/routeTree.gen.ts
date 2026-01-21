@@ -17,6 +17,8 @@ import { Route as GuestLoginRouteImport } from './routes/_guest/login'
 import { Route as AuthDashboardRouteRouteImport } from './routes/_auth/dashboard/route'
 import { Route as AuthDashboardIndexRouteImport } from './routes/_auth/dashboard/index'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as AuthDashboardUsermgmtIndexRouteImport } from './routes/_auth/dashboard/usermgmt/index'
+import { Route as AuthDashboardCrawlsIndexRouteImport } from './routes/_auth/dashboard/crawls/index'
 
 const GuestRouteRoute = GuestRouteRouteImport.update({
   id: '/_guest',
@@ -56,6 +58,18 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthDashboardUsermgmtIndexRoute =
+  AuthDashboardUsermgmtIndexRouteImport.update({
+    id: '/usermgmt/',
+    path: '/usermgmt/',
+    getParentRoute: () => AuthDashboardRouteRoute,
+  } as any)
+const AuthDashboardCrawlsIndexRoute =
+  AuthDashboardCrawlsIndexRouteImport.update({
+    id: '/crawls/',
+    path: '/crawls/',
+    getParentRoute: () => AuthDashboardRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -64,6 +78,8 @@ export interface FileRoutesByFullPath {
   '/signup': typeof GuestSignupRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/dashboard/': typeof AuthDashboardIndexRoute
+  '/dashboard/crawls/': typeof AuthDashboardCrawlsIndexRoute
+  '/dashboard/usermgmt/': typeof AuthDashboardUsermgmtIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -71,6 +87,8 @@ export interface FileRoutesByTo {
   '/signup': typeof GuestSignupRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/dashboard': typeof AuthDashboardIndexRoute
+  '/dashboard/crawls': typeof AuthDashboardCrawlsIndexRoute
+  '/dashboard/usermgmt': typeof AuthDashboardUsermgmtIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -82,6 +100,8 @@ export interface FileRoutesById {
   '/_guest/signup': typeof GuestSignupRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/_auth/dashboard/': typeof AuthDashboardIndexRoute
+  '/_auth/dashboard/crawls/': typeof AuthDashboardCrawlsIndexRoute
+  '/_auth/dashboard/usermgmt/': typeof AuthDashboardUsermgmtIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -92,8 +112,17 @@ export interface FileRouteTypes {
     | '/signup'
     | '/api/auth/$'
     | '/dashboard/'
+    | '/dashboard/crawls/'
+    | '/dashboard/usermgmt/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/signup' | '/api/auth/$' | '/dashboard'
+  to:
+    | '/'
+    | '/login'
+    | '/signup'
+    | '/api/auth/$'
+    | '/dashboard'
+    | '/dashboard/crawls'
+    | '/dashboard/usermgmt'
   id:
     | '__root__'
     | '/'
@@ -104,6 +133,8 @@ export interface FileRouteTypes {
     | '/_guest/signup'
     | '/api/auth/$'
     | '/_auth/dashboard/'
+    | '/_auth/dashboard/crawls/'
+    | '/_auth/dashboard/usermgmt/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,15 +202,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_auth/dashboard/usermgmt/': {
+      id: '/_auth/dashboard/usermgmt/'
+      path: '/usermgmt'
+      fullPath: '/dashboard/usermgmt/'
+      preLoaderRoute: typeof AuthDashboardUsermgmtIndexRouteImport
+      parentRoute: typeof AuthDashboardRouteRoute
+    }
+    '/_auth/dashboard/crawls/': {
+      id: '/_auth/dashboard/crawls/'
+      path: '/crawls'
+      fullPath: '/dashboard/crawls/'
+      preLoaderRoute: typeof AuthDashboardCrawlsIndexRouteImport
+      parentRoute: typeof AuthDashboardRouteRoute
+    }
   }
 }
 
 interface AuthDashboardRouteRouteChildren {
   AuthDashboardIndexRoute: typeof AuthDashboardIndexRoute
+  AuthDashboardCrawlsIndexRoute: typeof AuthDashboardCrawlsIndexRoute
+  AuthDashboardUsermgmtIndexRoute: typeof AuthDashboardUsermgmtIndexRoute
 }
 
 const AuthDashboardRouteRouteChildren: AuthDashboardRouteRouteChildren = {
   AuthDashboardIndexRoute: AuthDashboardIndexRoute,
+  AuthDashboardCrawlsIndexRoute: AuthDashboardCrawlsIndexRoute,
+  AuthDashboardUsermgmtIndexRoute: AuthDashboardUsermgmtIndexRoute,
 }
 
 const AuthDashboardRouteRouteWithChildren =
