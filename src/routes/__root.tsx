@@ -40,11 +40,11 @@ export const Route = createRootRouteWithContext<{
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "React TanStarter",
+        title: "DimwitNetworks Requestr",
       },
       {
         name: "description",
-        content: "A minimal starter template for 🏝️ TanStack Start.",
+        content: "Song request system",
       },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
