@@ -1,3 +1,6 @@
+# YOU ARE ON THE WRONG BRANCH USE MAIN
+original readme below for convenience
+
 # "Windev" AMRSystem
 
 TanStack Start-based ad crawl and music request manager.
