@@ -28,7 +28,7 @@ class AdCrawlRequests(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Request for {self.friendly_name} by {self.requested_by}"
+        return f"{self.friendly_name} ({self.campaign}, Req'r {self.requested_by})"
     
     class Meta:
         verbose_name = "Ad Crawl Request"

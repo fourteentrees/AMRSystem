@@ -85,5 +85,9 @@ target/
 __pycache__/
 local_settings.py
 
+# For us:
+songrequests/__pycache__/
+
+
 .env
 db.sqlite3

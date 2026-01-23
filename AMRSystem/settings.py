@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
+# Change this to your custom customer-facing name
+# DimwitNetworks uses "Requestr"
+APP_NAME = "AMRSystem"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "miscpages.apps.MiscpagesConfig",
     "songrequests.apps.SongrequestsConfig",
     "adcrawls.apps.AdcrawlsConfig",
     "django.contrib.admin",
@@ -60,6 +65,7 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "AMRSystem.context_process.app_name",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
@@ -117,3 +123,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+# I don't think we'll be changing the app name anytime soon, so hardcoding it here wont cause too much trouble :3
+STATICFILES_DIRS = [
+    BASE_DIR / "AMRSystem/static",
+]

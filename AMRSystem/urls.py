@@ -17,14 +17,17 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
 
 import adcrawls.views
+import miscpages.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("adcrawls/<int:id>/content.txt", adcrawls.views.getcrawlcontent, name="getcrawlcontent"),
     path("adcrawls/<int:id>.json", adcrawls.views.detailjson, name="detailjson"),
+    path("", miscpages.views.home, name="home"),
 ]
 
-admin.site.site_header = 'AMRSystem Administration'
-admin.site.site_title = 'AMRSystem Administration'
+admin.site.site_header = f'{settings.APP_NAME} Administration'
+admin.site.site_title = f'{settings.APP_NAME} Administration'

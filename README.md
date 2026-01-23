@@ -9,3 +9,4 @@ Built originally for [KWSF-IP](https://live.mistwx.com/player?channel=kwsf01) bu
 
 # App the cations
 - `songrequests` - Song requests, obviously...
+- `adcrawls` - Ad crawls. API-only.
