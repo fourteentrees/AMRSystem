@@ -87,7 +87,9 @@ local_settings.py
 
 # For us:
 songrequests/__pycache__/
-
+AMRSystem/__pycache__/
+agents/__pycache__/
+adcrawls/__pycache__/
 
 .env
 db.sqlite3

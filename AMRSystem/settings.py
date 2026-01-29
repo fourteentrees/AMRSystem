@@ -16,6 +16,11 @@ from pathlib import Path
 # DimwitNetworks uses "Requestr"
 APP_NAME = "AMRSystem"
 
+# Whether to hide the 'Administration' link in the navbar
+# It's secure already since we don't really alter it beyond Django's admin interface,
+# but if you wish to add a layer of security thru obscurity (BOOOOO), set this to True
+HIDE_ADMIN_IN_NAVBAR = False
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -65,7 +70,7 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
-                "AMRSystem.context_process.app_name",
+                "AMRSystem.context_process.app_config",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",

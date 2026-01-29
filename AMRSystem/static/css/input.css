@@ -3,6 +3,18 @@
 @source not "./tailwindcss";
 @source not "./daisyui{,*}.mjs";
 
+/*
+*
+* Tailwind only outputs classes that it sees in your code.
+* Very helpful for performance. HOWEVER!!!
+* The django templates did NOT exist to it.
+*
+* Anyways it works now
+*
+*/
+@source "../../../songrequests/templates/";
+@source "../../../miscpages/templates/";
+
 @plugin "./daisyui.mjs";
 
 @plugin "./daisyui-theme.mjs" {

@@ -21,12 +21,16 @@ from django.conf import settings
 
 import adcrawls.views
 import miscpages.views
+import songrequests.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("adcrawls/<int:id>/content.txt", adcrawls.views.getcrawlcontent, name="getcrawlcontent"),
     path("adcrawls/<int:id>.json", adcrawls.views.detailjson, name="detailjson"),
     path("", miscpages.views.home, name="home"),
+    path(".well-known/gpc.json", miscpages.views.gpc, name="gpc"),
+    path("about/", miscpages.views.about, name="about"),
+    path("request-song/", songrequests.views.request_song, name="request_song"),
 ]
 
 admin.site.site_header = f'{settings.APP_NAME} Administration'

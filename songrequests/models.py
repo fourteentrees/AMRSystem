@@ -3,7 +3,7 @@ from django.db import models
 class Song(models.Model):
     title = models.CharField(max_length=200)
     artist = models.CharField(max_length=200)
-    album = models.CharField(max_length=200, blank=True, null=True)
+    album = models.CharField(max_length=200, null=False, default='Single')
     duration = models.DurationField()
     url = models.URLField(max_length=500, blank=True, null=True)
 
