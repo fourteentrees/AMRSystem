@@ -8,7 +8,7 @@ def keygenerator():
 
 class Agent(models.Model):
     name = models.CharField(max_length=100, help_text="This is for your reference")
-    api_key = models.CharField(min_length=32, default=keygenerator, unique=True)
+    api_key = models.CharField(default=keygenerator, unique=True)
     rate_limit = models.IntegerField(default=1600, help_text="Ensure your agent implementation does not go over this number of requests in 2 hours.")  # requests per 2 hours
 
     # Will return song requests sent in after this date.

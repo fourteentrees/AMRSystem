@@ -9,7 +9,7 @@
 					{% csrf_token %}
 
 					<div class="overflow-x-auto">
-						<table class="table table-zebra">
+						<table class="table table-zebra table-pin-rows">
 							<thead>
 								<tr>
 									<th></th>
@@ -17,6 +17,7 @@
 									<th>Artist</th>
 									<th>Album</th>
 									<th>Duration</th>
+									<th>Listen</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -29,10 +30,11 @@
 										<td>{{ song.artist }}</td>
 										<td>{{ song.album }}</td>
 										<td>{{ song.duration }}</td>
+										<td><audio controls src="{{ song.url }}"></audio></td>
 									</tr>
 								{% empty %}
 									<tr>
-										<td colspan="5" class="text-center">No songs available.</td>
+										<td colspan="6" class="text-center">There are no songs in the song library. Yell at the admin to add some.</td>
 									</tr>
 								{% endfor %}
 							</tbody>

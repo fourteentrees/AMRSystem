@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "miscpages.apps.MiscpagesConfig",
     "songrequests.apps.SongrequestsConfig",
     "adcrawls.apps.AdcrawlsConfig",
+    "agents.apps.AgentsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

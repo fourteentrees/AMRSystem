@@ -22,15 +22,19 @@ from django.conf import settings
 import adcrawls.views
 import miscpages.views
 import songrequests.views
+import agents.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("adcrawls/<int:id>/content.txt", adcrawls.views.getcrawlcontent, name="getcrawlcontent"),
-    path("adcrawls/<int:id>.json", adcrawls.views.detailjson, name="detailjson"),
+    path("api/adcrawls/<int:id>/content.txt", adcrawls.views.getcrawlcontent, name="getcrawlcontent"),
+    path("api/adcrawls/<int:id>.json", adcrawls.views.detailjson, name="detailjson"),
     path("", miscpages.views.home, name="home"),
     path(".well-known/gpc.json", miscpages.views.gpc, name="gpc"),
     path("about/", miscpages.views.about, name="about"),
     path("request-song/", songrequests.views.request_song, name="request_song"),
+    path("api/", agents.views.api_root, name="api_root"),
+    path("api/songrequests-since-lp/", agents.views.requests_since_last_poll, name="requests_since_last_poll"),
+    path("api/adcrawls/random/<int:last_id>", agents.views.random_ad_crawl, name="random_adcrawl_after_id"),
 ]
 
 admin.site.site_header = f'{settings.APP_NAME} Administration'
