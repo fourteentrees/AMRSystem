@@ -1,2 +1,4 @@
 django>=6.0.0
-pyinstaller>=5.1
+pyinstaller>=6.18.0
+websockets>=16.0
+termcolor>=3.3.0

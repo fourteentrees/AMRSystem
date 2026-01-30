@@ -93,3 +93,5 @@ adcrawls/__pycache__/
 
 .env
 db.sqlite3
+tailwindcss
+tailwindcss.exe
