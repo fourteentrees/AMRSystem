@@ -35,7 +35,6 @@ SECRET_KEY = "django-insecure-1j4_w3yoy9)=hcc*!e10m53jf4=suyj8jydh$5735^g4kdmonu
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "amrs-test.14trees.dev",
     "localhost",
 ]
 
