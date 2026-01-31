@@ -92,14 +92,6 @@ def random_ad_crawl(request, last_id):
         })
         return data
     
-    if not last_id.isdigit():
-        data = JsonResponse({
-            'code': 400,
-            'http': 'Bad Request',
-            'message': 'Your ad crawl ID sucks, it has to be an integer.'
-        })
-        return data
-    
     if not last_id:
         data = JsonResponse({
             'code': 400,
@@ -126,6 +118,47 @@ def random_ad_crawl(request, last_id):
         'created_at': random_crawl.created_at.isoformat()
     }
 
+    data = JsonResponse({
+        'code': 200,
+        'http': 'OK',
+        'ad_crawl': crawl_data
+    })
+    return data
+
+def random_ad_crawl_non_duplicate_safe(request):
+    # Like random_ad_crawl, but it doesn't take a last_id parameter and always returns a random ad crawl
+    if 'HTTP_AUTHORIZATION' not in request.META:
+        data = JsonResponse({
+            'code': 401,
+            'http': 'Unauthorized',
+            'message': 'pls give api key!!!!!'
+        })
+        return data
+    api_key = request.META['HTTP_AUTHORIZATION'].split(' ')[1]
+    # search for the agent
+    try:
+        agent = Agent.objects.get(api_key=api_key)
+    except Agent.DoesNotExist:
+        data = JsonResponse({
+            'code': 401,
+            'http': 'Unauthorized',
+            'message': 'Your API key sucks, check it against the ones in the admin panel.'
+        })
+        return data
+    ad_crawls = AdCrawl.objects.all()
+    if not ad_crawls.exists():
+        data = JsonResponse({
+            'code': 404,
+            'http': 'Not Found',
+            'message': 'No ad crawls available. Add more in the admin UI'
+        })
+        return data
+    random_crawl = ad_crawls.order_by('?').first()
+    crawl_data = {
+        'id': random_crawl.id,
+        'content': random_crawl.content,
+        'created_at': random_crawl.created_at.isoformat()
+    }
     data = JsonResponse({
         'code': 200,
         'http': 'OK',

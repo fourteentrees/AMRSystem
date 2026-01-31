@@ -35,6 +35,7 @@ urlpatterns = [
     path("api/", agents.views.api_root, name="api_root"),
     path("api/songrequests-since-lp/", agents.views.requests_since_last_poll, name="requests_since_last_poll"),
     path("api/adcrawls/random/<int:last_id>", agents.views.random_ad_crawl, name="random_adcrawl_after_id"),
+    path("api/adcrawls/random", agents.views.random_ad_crawl_non_duplicate_safe, name="random_adcrawl_nds"),
 ]
 
 admin.site.site_header = f'{settings.APP_NAME} Administration'
